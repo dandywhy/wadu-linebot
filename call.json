@@ -1,0 +1,96 @@
+{
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "horizontal",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "postback",
+                "label": "戰",
+                "data": "join"
+              },
+              "adjustMode": "shrink-to-fit",
+              "color": "#213740",
+              "style": "primary",
+              "offsetTop": "none",
+              "margin": "none"
+            }
+          ],
+          "spacing": "none",
+          "margin": "none",
+          "cornerRadius": "xxl"
+        },
+        {
+          "type": "separator"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "postback",
+                "label": "棄",
+                "data": "quit"
+              },
+              "color": "#496B73",
+              "style": "primary"
+            }
+          ],
+          "cornerRadius": "xxl"
+        },
+        {
+          "type": "separator"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "postback",
+                "label": "統",
+                "data": "count"
+              },
+              "color": "#81A6A6",
+              "style": "primary"
+            }
+          ],
+          "cornerRadius": "xxl"
+        }
+      ],
+      "margin": "none",
+      "spacing": "sm"
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "postback",
+            "label": "歸零",
+            "data": "clear"
+          },
+          "color": "#81A6A6cc",
+          "style": "link",
+          "margin": "none",
+          "height": "sm"
+        }
+      ]
+    },
+    "styles": {
+      "footer": {
+        "separator": true
+      }
+    }
+  }

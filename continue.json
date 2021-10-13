@@ -1,0 +1,71 @@
+{
+    "type": "carousel",
+    "contents": [
+      {
+        "type": "bubble",
+        "size": "nano",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "繼續",
+              "align": "center",
+              "adjustMode": "shrink-to-fit",
+              "action": {
+                "type": "postback",
+                "label": "繼續",
+                "data": "start"
+              }
+            }
+          ],
+          "backgroundColor": "#F2CF63"
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "nano",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "離開",
+              "align": "center",
+              "adjustMode": "shrink-to-fit",
+              "action": {
+                "type": "postback",
+                "label": "離開",
+                "data": "exit"
+              }
+            }
+          ],
+          "backgroundColor": "#F2C063"
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "nano",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "加入",
+              "align": "center",
+              "adjustMode": "shrink-to-fit",
+              "action": {
+                "type": "postback",
+                "label": "加入",
+                "data": "joingame"
+              }
+            }
+          ],
+          "backgroundColor": "#F2C063"
+        }
+      }
+    ]
+  }

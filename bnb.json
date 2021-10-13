@@ -1,0 +1,88 @@
+{
+    "type": "bubble",
+    "size": "kilo",
+    "hero": {
+      "type": "image",
+      "url": "https://i.imgur.com/iLPtvUV.png",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "uri": "http://linecorp.com/"
+      },
+      "position": "relative",
+      "margin": "none",
+      "animated": false
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "💣BNB分組💣",
+          "size": "xl",
+          "weight": "bold",
+          "align": "center"
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "margin": "none",
+          "contents": [
+            {
+              "type": "text",
+              "text": "勿洗頻",
+              "size": "sm",
+              "color": "#999999",
+              "margin": "none",
+              "style": "normal",
+              "flex": 1,
+              "align": "center"
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "horizontal",
+      "spacing": "md",
+      "contents": [
+        {
+          "type": "button",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "2v警告",
+            "data": "2"
+          },
+          "style": "link",
+          "adjustMode": "shrink-to-fit"
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "3v警告",
+            "data": "3"
+          },
+          "adjustMode": "shrink-to-fit"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "postback",
+            "label": "4v警告",
+            "data": "4"
+          },
+          "height": "sm",
+          "style": "link",
+          "adjustMode": "shrink-to-fit"
+        }
+      ]
+    }
+  }

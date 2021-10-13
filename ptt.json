@@ -1,0 +1,96 @@
+{
+    "type": "bubble",
+    "size": "kilo",
+    "hero": {
+      "type": "image",
+      "url": "https://i.imgur.com/4LPtTTc.jpg?1",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "uri": "http://linecorp.com/"
+      },
+      "position": "relative",
+      "margin": "none",
+      "animated": true
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "PTT最新內容",
+          "size": "lg",
+          "weight": "bold"
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "margin": "none",
+          "contents": [
+            {
+              "type": "text",
+              "text": "安心食用",
+              "size": "sm",
+              "color": "#999999",
+              "style": "normal",
+              "flex": 1
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "xs",
+      "contents": [
+        {
+          "type": "button",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "八卦版",
+            "data": "8"
+          },
+          "style": "link",
+          "adjustMode": "shrink-to-fit"
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "表特版",
+            "data": "9"
+          },
+          "adjustMode": "shrink-to-fit"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "postback",
+            "label": "電影版",
+            "data": "10"
+          },
+          "height": "sm",
+          "style": "link",
+          "adjustMode": "shrink-to-fit"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "postback",
+            "label": "股市版",
+            "data": "11"
+          },
+          "style": "link",
+          "height": "sm",
+          "adjustMode": "shrink-to-fit"
+        }
+      ]
+    }
+  }
