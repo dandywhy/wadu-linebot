@@ -1,5 +1,5 @@
 {
-  "ChannelAccessToken":"/ucK8Led+XcVoqa/0LQrpP64Qm4m7dYKFAunySXEsd9h3QBwdNgo1/FH8/I0Bmuk+a9LCAbnKHP01/QnuDEebnTv4ucb4mW5dQkozicZrjWR9AEwVQ8p+NPY18kMsyRgGyL59vGI19dKH55WyRIsAQdB04t89/1O/w1cDnyilFU=",
-  "ChannelSecret":"4ce96503b76b10203bb5cbd7ed11ca0f",
-  "PymongoClient":"mongodb+srv://root:root1124@waducluster.zsmpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  "ChannelAccessToken":"",
+  "ChannelSecret":"",
+  "PymongoClient":""
 }
