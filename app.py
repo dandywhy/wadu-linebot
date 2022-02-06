@@ -41,7 +41,7 @@ line_bot_api = LineBotApi(os.environ['ChannelAccessToken'])
 # Channel Secret
 handler = WebhookHandler(os.environ['ChannelSecret'])
 
-client = pymongo.MongoClient(os.environ['PymongoClient'])
+client = pymongo.MongoClient(os.environ['pymongoClient'])
 db = client.wadubot
 col = db.col_name
 col_rank = db.rank_room
