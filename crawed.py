@@ -125,9 +125,6 @@ def moive():
 
 
 
-
-
-
 def GetWeather(station):
     end_point= "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=CWB-A717DED8-4CD4-4005-8F93-72B183B0D61A&format=JSON"
     data = requests.get(end_point).json()
@@ -207,6 +204,7 @@ def Earthquake():
         earthquake_msg += f'地震報告：{earthquake_data["reportContent"]}\n'
         return earthquake_msg
             
+
 
 def Covid():
     request_url = requests.get("https://news.campaign.yahoo.com.tw/2019-nCoV/index.php",headers={

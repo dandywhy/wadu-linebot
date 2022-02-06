@@ -425,14 +425,6 @@ def handle_message(event):
     elif data == 'join':
         message = register_profile(event)
         line_bot_api.reply_message(event.reply_token, message)
-    elif data == 'quit':
-        col.delete_one({'user_id': uid})
-        message = TextSendMessage(text=name + "已退戰")
-        line_bot_api.reply_message(event.reply_token, message)
-    elif data == 'count':
-        message = TextSendMessage(
-            text='目前' + count_profile() + '人參戰\n' + total_resgister())
-        line_bot_api.reply_message(event.reply_token, message)
     elif data == 'clear':
         col.delete_many({})
         message = TextSendMessage(text="紀錄已清除")
