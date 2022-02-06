@@ -14,7 +14,6 @@ from linebot.models.responses import UserIds
 from pymongo import collection, IndexModel, ASCENDING, DESCENDING
 from requests.api import get
 
-
 # ======這裡是呼叫的檔案內容=====
 from message import *
 from new import *
@@ -36,15 +35,13 @@ import pymongo
 app = Flask(__name__)
 
 
-with open('open.json', 'r', encoding='utf-8') as file:
-    openData = json.load(file)
 
 # Channel Access Token
-line_bot_api = LineBotApi(openData['ChannelAccessToken'])
+line_bot_api = LineBotApi(os.environ['ChannelAccessToken'])
 # Channel Secret
-handler = WebhookHandler(openData['ChannelSecret'])
+handler = WebhookHandler(os.environ['ChannelSecret'])
 
-client = pymongo.MongoClient(openData['PymongoClient'])
+client = pymongo.MongoClient(os.environ['PymongoClient'])
 db = client.wadubot
 col = db.col_name
 col_rank = db.rank_room
@@ -76,35 +73,6 @@ def get_profile(event):
     profile = line_bot_api.get_group_member_profile(group_id, user_id)
     uid = {'name': profile.display_name, 'user_id': profile.user_id}
     return uid
-
-
-def register_profile(event):
-    uid = get_profile(event)
-    nid = uid['name']
-    try:
-        col.insert_one(uid)
-        message = TextSendMessage(text=nid + '已加入')
-    except:
-        message = TextSendMessage(text='笨蛋' + nid + '已登記過拉 !')
-    return message
-
-
-def count_profile():
-    count = col.count_documents({})
-    return str(count)
-
-
-def total_resgister():
-    content = ''
-    cursor = col.find()
-    for doc in cursor:
-        doc_name = doc['name']
-        content += f'{doc_name}\n'
-    if len(content) != 0:
-        message = content
-    else:
-        message = '無人登記'
-    return message
 
 
 def join_pw(event):
@@ -418,12 +386,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif data == '11':
         message = TextSendMessage(text=name + "哈囉\n" + stock_ptt())
-        line_bot_api.reply_message(event.reply_token, message)
-    elif data == 'hello':
-        message = TextSendMessage(text=count_profile())
-        line_bot_api.reply_message(event.reply_token, message)
-    elif data == 'join':
-        message = register_profile(event)
         line_bot_api.reply_message(event.reply_token, message)
     elif data == 'clear':
         col.delete_many({})
