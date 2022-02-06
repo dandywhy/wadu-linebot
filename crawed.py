@@ -123,7 +123,7 @@ def moive():
         content += f'{movie_name}\n{english_name}\n上映日:{release_time}\n------------------\n'
     return content
 
- 
+
 
 
 
@@ -179,7 +179,6 @@ def MakeWeather(station):
 def MakeAQI(location):
     end_point = "https://data.epa.gov.tw/api/v1/aqx_p_432?api_key=9be7b239-557b-4c10-9775-78cadfc555e9" 
     data = requests.get(end_point)
-    # AQi= data.json(["records"])
     AQImsg = ""
     if data.status_code == 500:
         return "無 AQI 資料"
@@ -193,11 +192,21 @@ def MakeAQI(location):
                 AQImsg += "空氣品質：" + AQIdata["Status"] + "\n"
                 AQImsg += "PM2.5：" + AQIdata["PM2.5"] + "ug/m3"
                 AQImsg += "\n\n資料來源：環保署"
-        
         return AQImsg
 
 
 
+def Earthquake():
+    end_point = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0016-001?Authorization=CWB-E7F025FB-4BBF-476E-9251-454E9D3FC2E0&limit=10&format=JSON"
+    data = requests.get(end_point)
+    earthquake_msg = ""
+    if data.status_code == 500:
+        return "無地震資料"
+    else:
+        earthquake_data = data.json()["records"]["earthquake"][0]
+        earthquake_msg += f'地震報告：{earthquake_data["reportContent"]}\n'
+        return earthquake_msg
+            
 
 def Covid():
     request_url = requests.get("https://news.campaign.yahoo.com.tw/2019-nCoV/index.php",headers={
@@ -220,6 +229,3 @@ def Covid():
     msg += "死亡病例：" + other_third + "人\n\n"
     msg += "資料來源：衛福部網站"
     return msg
-
-
-

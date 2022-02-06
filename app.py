@@ -83,7 +83,7 @@ def register_profile(event):
     nid = uid['name']
     try:
         col.insert_one(uid)
-        message = TextSendMessage(text=nid + '已參戰')
+        message = TextSendMessage(text=nid + '已加入')
     except:
         message = TextSendMessage(text='笨蛋' + nid + '已登記過拉 !')
     return message
@@ -135,7 +135,7 @@ def create_answer():
         nid = col_game.find_one()['name']
         if col_answer.find_one() == None:
             col_answer.insert_many([{'no': '1', 'answer': answer}, {'no': '2', 'lowest': 1}, {
-                                   'no': '3', 'highest': 100}, {'no': '4', 'count': 0}])
+                'no': '3', 'highest': 100}, {'no': '4', 'count': 0}])
             number = col_game.estimated_document_count()
             message = TextSendMessage(
                 text=f'遊戲開始 ! \n請大家依序輸入\n【 / + 數字 】ex: /87\n範圍 : 1 ~ 100 \n不包含1 和 100\n- - - - - - - - - - - - - - -\n本局玩家 : {number}人\n由 {nid} 先猜')
@@ -300,10 +300,6 @@ def handle_message(event):
                                                                                                    label="分組", data="7")
                                                                                                )
                                                                           ])))
-    elif msg == '號召':
-        FlexMessage = json.load(open('call.json'))
-        line_bot_api.reply_message(
-            event.reply_token, FlexSendMessage('hello', FlexMessage))
     elif msg == '終極密碼':
         message = []
         FlexMessage = json.load(open('guess_pw.json'))
@@ -353,6 +349,10 @@ def handle_message(event):
             AirMsg = "查無此測站空氣品質"
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=AirMsg))
+    
+    if msg == '地震':
+        message = TextSendMessage(text = Earthquake())
+        line_bot_api.reply_message(event.reply_token, message)
 
     if msg == '指令':
         message = "目前指令:\n功能\n分組\nPtt\n最新電影\n疫情\n地區測站+天氣(ex:福山天氣)\n地區測站+空氣(ex:淡水空氣)"
