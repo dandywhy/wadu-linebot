@@ -1,3 +1,4 @@
+from email import header
 from typing import Text
 from bs4 import BeautifulSoup
 from linebot import (LineBotApi, WebhookHandler)
@@ -41,7 +42,7 @@ def gossiping_ptt():
     request_html = requests.get("https://www.ptt.cc/bbs/Gossiping/index.html",headers={"cookie":"over18=1",
         "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36"})
     request_html.encoding = 'uft-8'
-    soup = BeautifulSoup(request_html.text, "html.parser") 
+    soup = BeautifulSoup(request_html.text, "html.parser")
     titles = soup.find_all("div",class_="title")
 
     ## 印出排好版的HTML架構
@@ -194,14 +195,16 @@ def MakeAQI(location):
 
 
 def Earthquake():
-    end_point = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0016-001?Authorization=CWB-E7F025FB-4BBF-476E-9251-454E9D3FC2E0&limit=10&format=JSON"
+    end_point = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0015-001?Authorization=CWB-E7F025FB-4BBF-476E-9251-454E9D3FC2E0&limit=1&stationName=string"
     data = requests.get(end_point)
-    earthquake_msg = ""
+    earthquake_msg = []
     if data.status_code == 500:
         return "無地震資料"
     else:
         earthquake_data = data.json()["records"]["earthquake"][0]
-        earthquake_msg += f'地震報告：{earthquake_data["reportContent"]}\n'
+        earthquake_msg.append(earthquake_data["reportContent"])
+        earthquake_msg.append(earthquake_data["reportImageURI"])
+        earthquake_msg.append(earthquake_msg["web"])
         return earthquake_msg
             
 
@@ -227,3 +230,6 @@ def Covid():
     msg += "死亡病例：" + other_third + "人\n\n"
     msg += "資料來源：衛福部網站"
     return msg
+
+
+    
