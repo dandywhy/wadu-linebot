@@ -204,7 +204,7 @@ def Earthquake():
         earthquake_data = data.json()["records"]["earthquake"][0]
         earthquake_msg.append(earthquake_data["reportContent"])
         earthquake_msg.append(earthquake_data["reportImageURI"])
-        earthquake_msg.append(earthquake_msg["web"])
+        earthquake_msg.append(earthquake_data["web"])
         return earthquake_msg
             
 
