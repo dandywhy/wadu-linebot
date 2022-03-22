@@ -17,5 +17,4 @@ else:
     earthquake_msg.append(earthquake_data["reportContent"])
     earthquake_msg.append(earthquake_data["reportImageURI"])
     earthquake_msg.append(earthquake_data["web"])
-    earthquake_msg.append(earthquake_data["reportRemark"])
     print(earthquake_msg)

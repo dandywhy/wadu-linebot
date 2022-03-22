@@ -321,7 +321,7 @@ def handle_message(event):
     if msg == '地震':
         message = []
         data = Earthquake()
-        message.append(TextSendMessage(text=f'{data[0]}\n本報告係中央氣象局地震觀測網即時地震資料地震速報之結果'))
+        message.append(TextSendMessage(text=f'{data[0]}\n{data[2]}\n\n資料來源為中央氣象局'))
         message.append(ImageSendMessage(
             original_content_url=data[1],
             preview_image_url=data[1]
