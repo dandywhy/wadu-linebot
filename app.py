@@ -302,6 +302,9 @@ def handle_message(event):
         col_rank.delete_many({})
         message = TextSendMessage(text='資料已清空!')
         line_bot_api.reply_message(event.reply_token, message)
+    elif msg == '私聊':
+        message = 'https://liff.line.me/1657027110-vXaP6gjP'
+        line_bot_api.reply_message(event.reply_token, message)
     if msg[2:4] == "天氣":
         station = msg[:2]
         WeatherMsg = MakeWeather(station)
@@ -309,7 +312,7 @@ def handle_message(event):
             WeatherMsg = "查無此測站天氣狀況"
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=WeatherMsg))
-
+    
     if msg[2:4] == "空氣":
         location = msg[:2]
         AirMsg = MakeAQI(location)
