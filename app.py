@@ -304,7 +304,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif msg == '私聊':
         FlexMessage = json.load(open('minichat.json'))
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(FlexMessage))
+        line_bot_api.reply_message(event.reply_token, FlexSendMessage('minichat',FlexMessage))
     if msg[2:4] == "天氣":
         station = msg[:2]
         WeatherMsg = MakeWeather(station)
