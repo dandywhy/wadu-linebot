@@ -1,0 +1,25 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "MiniChat",
+        "size": "lg",
+        "margin": "none",
+        "weight": "bold",
+        "style": "normal",
+        "decoration": "none",
+        "position": "relative",
+        "align": "center",
+        "action": {
+          "type": "uri",
+          "label": "MiniSocketChat",
+          "uri": "https://salty-lake-88491.herokuapp.com/signin"
+        }
+      }
+    ]
+  }
+}

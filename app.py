@@ -303,8 +303,8 @@ def handle_message(event):
         message = TextSendMessage(text='資料已清空!')
         line_bot_api.reply_message(event.reply_token, message)
     elif msg == '私聊':
-        message = TextSendMessage(text='https://liff.line.me/1657027110-vXaP6gjP')
-        line_bot_api.reply_message(event.reply_token, message)
+        FlexMessage = json.load(open('minichat.json'))
+        line_bot_api.reply_message(event.reply_token, FlexMessage)
     if msg[2:4] == "天氣":
         station = msg[:2]
         WeatherMsg = MakeWeather(station)
