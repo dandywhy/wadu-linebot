@@ -243,6 +243,9 @@ def handle_message(event):
     elif msg == '疫情':
         message = TextSendMessage(text=Covid())
         line_bot_api.reply_message(event.reply_token, message)
+    elif msg == '圖':
+        message = ImageSendMessage(original_content_url='https://flo.uri.sh/visualisation/9472193/embed',preview_image_url=None)
+        line_bot_api.reply_message(event.reply_token, message)
     elif msg == '分組':
         FlexMessage = json.load(open('bnb.json'))
         line_bot_api.reply_message(
