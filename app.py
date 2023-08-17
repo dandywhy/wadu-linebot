@@ -240,9 +240,6 @@ def handle_message(event):
     elif msg == '疫情':
         message = TextSendMessage(text=Covid())
         line_bot_api.reply_message(event.reply_token, message)
-    elif msg == '圖':
-        message = ImageSendMessage(original_content_url='https://flo.uri.sh/visualisation/9472193/embed',preview_image_url=None)
-        line_bot_api.reply_message(event.reply_token, message)
     elif msg == '分組':
         FlexMessage = json.load(open('bnb.json'))
         line_bot_api.reply_message(
@@ -257,7 +254,7 @@ def handle_message(event):
                                     ),
                     QuickReplyButton(image_url="https://i.imgur.com/lzIyXLL.png",
                                     action=PostbackAction(
-                                        label="疫情", data="5")
+                                        label="終極密碼", data="5")
                                     ),
                     QuickReplyButton(image_url="https://i.imgur.com/8gAY0vH.png",
                                     action=PostbackAction(
@@ -320,17 +317,6 @@ def handle_message(event):
             AirMsg = "查無此測站空氣品質"
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=AirMsg))
-    
-    if msg == '地震':
-        message = []
-        data = Earthquake()
-        message.append(TextSendMessage(text=f'{data[0]}\n{data[2]}\n\n資料來源為中央氣象局'))
-        message.append(ImageSendMessage(
-            original_content_url=data[1],
-            preview_image_url=data[1]
-            ))
-        line_bot_api.reply_message(event.reply_token, message)
-
     if msg == '指令':
         message = "目前指令:\n功能\n分組\nPtt\n最新電影\n疫情\n地區測站+天氣(ex:福山天氣)\n地區測站+空氣(ex:淡水空氣)"
         line_bot_api.reply_message(
@@ -375,8 +361,11 @@ def handle_message(event):
         message = TextSendMessage(text=name + "已分組：" + random_bot4v())
         line_bot_api.reply_message(event.reply_token, message)
     elif data == '5':
-        message = TextSendMessage(text=Covid())
-        line_bot_api.reply_message(event.reply_token, message)
+        message = []
+        FlexMessage = json.load(open('guess_pw.json'))
+        message.append(TextSendMessage(text='請先加入遊戲哦!'))
+        message.append(FlexSendMessage('終極密碼', FlexMessage))
+        line_bot_api.reply_message(event.reply_token,  message)
     elif data == '6':
         message = TextSendMessage(text=moive())
         line_bot_api.reply_message(event.reply_token, message)
