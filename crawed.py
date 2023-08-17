@@ -191,21 +191,6 @@ def MakeAQI(location):
                 AQImsg += "PM2.5：" + AQIdata["PM2.5"] + "ug/m3"
                 AQImsg += "\n\n資料來源：環保署"
         return AQImsg
-
-
-
-def Earthquake():
-    end_point = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/E-A0015-001?Authorization=CWB-E7F025FB-4BBF-476E-9251-454E9D3FC2E0&limit=1&stationName=string"
-    data = requests.get(end_point)
-    earthquake_msg = []
-    if data.status_code == 500:
-        return "無地震資料"
-    else:
-        earthquake_data = data.json()["records"]["earthquake"][0]
-        earthquake_msg.append(earthquake_data["reportContent"])
-        earthquake_msg.append(earthquake_data["reportImageURI"])
-        earthquake_msg.append(earthquake_data["web"])
-        return earthquake_msg
             
 
 
