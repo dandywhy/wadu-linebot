@@ -31,10 +31,7 @@ import datetime
 import pymongo
 # ======python的函數庫==========
 
-
 app = Flask(__name__)
-
-
 
 # Channel Access Token
 line_bot_api = LineBotApi(os.environ['ChannelAccessToken'])
@@ -252,25 +249,25 @@ def handle_message(event):
             event.reply_token, FlexSendMessage('分組', FlexMessage))
     elif msg == '功能':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='🙋‍♂️功能列表🙋‍♂️',
-                                                                quick_reply=QuickReply(
-                                                                    items=[
-                                                                        QuickReplyButton(image_url="https://i.imgur.com/5EUdDxM.png",
-                                                                                        action=PostbackAction(
-                                                                                            label="PTT", data="1")
-                                                                                        ),
-                                                                        QuickReplyButton(image_url="https://i.imgur.com/lzIyXLL.png",
-                                                                                        action=PostbackAction(
-                                                                                            label="疫情", data="5")
-                                                                                        ),
-                                                                        QuickReplyButton(image_url="https://i.imgur.com/8gAY0vH.png",
-                                                                                        action=PostbackAction(
-                                                                                            label="電影", data="6")
-                                                                                        ),
-                                                                        QuickReplyButton(image_url="https://i.imgur.com/iLPtvUV.png",
-                                                                                        action=PostbackAction(
-                                                                                            label="分組", data="7")
-                                                                                        )
-                                                                    ])))
+            quick_reply=QuickReply(
+                items=[
+                    QuickReplyButton(image_url="https://i.imgur.com/5EUdDxM.png",
+                                    action=PostbackAction(
+                                        label="PTT", data="1")
+                                    ),
+                    QuickReplyButton(image_url="https://i.imgur.com/lzIyXLL.png",
+                                    action=PostbackAction(
+                                        label="疫情", data="5")
+                                    ),
+                    QuickReplyButton(image_url="https://i.imgur.com/8gAY0vH.png",
+                                    action=PostbackAction(
+                                        label="電影", data="6")
+                                    ),
+                    QuickReplyButton(image_url="https://i.imgur.com/iLPtvUV.png",
+                                    action=PostbackAction(
+                                        label="分組", data="7")
+                                    )
+                ])))
     elif msg == '終極密碼':
         message = []
         FlexMessage = json.load(open('guess_pw.json'))
