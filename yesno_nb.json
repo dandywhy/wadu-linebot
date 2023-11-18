@@ -1,0 +1,49 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "nano",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "是",
+            "align": "center",
+            "adjustMode": "shrink-to-fit",
+            "action": {
+              "type": "postback",
+              "label": "是",
+              "data": "yes_nb"
+            }
+          }
+        ],
+        "backgroundColor": "#F2CF63"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "nano",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "否",
+            "align": "center",
+            "adjustMode": "shrink-to-fit",
+            "action": {
+              "type": "postback",
+              "label": "no",
+              "data": "no_nb"
+            }
+          }
+        ],
+        "backgroundColor": "#F2C063"
+      }
+    }
+  ]
+}

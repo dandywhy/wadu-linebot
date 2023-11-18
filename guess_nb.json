@@ -1,0 +1,71 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "nano",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "加入遊戲",
+            "align": "center",
+            "adjustMode": "shrink-to-fit",
+            "action": {
+              "type": "postback",
+              "label": "加入遊戲",
+              "data": "joingame_nb"
+            }
+          }
+        ],
+        "backgroundColor": "#F2CF63"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "nano",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "開始遊戲",
+            "adjustMode": "shrink-to-fit",
+            "align": "center",
+            "action": {
+              "type": "postback",
+              "label": "開始遊戲",
+              "data": "start_nb"
+            }
+          }
+        ],
+        "backgroundColor": "#F2CF63"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "nano",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "解散遊戲",
+            "align": "center",
+            "adjustMode": "shrink-to-fit",
+            "action": {
+              "type": "postback",
+              "label": "解散遊戲",
+              "data": "disband_nb"
+            }
+          }
+        ],
+        "backgroundColor": "#F2C063"
+      }
+    }
+  ]
+}

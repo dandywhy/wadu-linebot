@@ -60,7 +60,7 @@
               "action": {
                 "type": "postback",
                 "label": "解散遊戲",
-                "data": "disband"
+                "data": "disband_nb"
               }
             }
           ],
