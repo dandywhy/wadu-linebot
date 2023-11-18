@@ -52,11 +52,7 @@ db_gn = client.guess_number
 col_ans = db_gn.answer
 col_gr = db_gn.game_room
 
-
-
 # 監聽所有來自 /callback 的 Post Request
-
-
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -275,8 +271,6 @@ def guess_number(guess, nid, count):
             col_ans.delete_many({})
             
             message = TextSendMessage(text=f'答案 : {res}\n{nid} 恭喜答對！')
-    if len(str(guess)) != 4:
-        message = TextSendMessage(text='請輸入四位數哦，四個不重複數字')
     return message
 def check_rank(event):
     nid = get_profile(event)['name']
@@ -403,8 +397,11 @@ def handle_message(event):
     if msg == '指令':
         message = "目前指令:\n功能\n分組\nPtt\n最新電影\n疫情\n地區測站+天氣(ex:福山天氣)\n地區測站+空氣(ex:淡水空氣)"
         line_bot_api.reply_message(
-            event.reply_token, TextMessage(text=message))
+            event.reply_token, TextSendMessage(text=message))
     if msg[0] == '!':
+        if len(msg[1:]) != 4:
+            message = TextSendMessage(text='請輸入四位數字，四個數字不重複')
+            line_bot_api.reply_message(event.reply_token, message)
         guess = int(msg[1:5])
         nid = get_profile(event)['name']
         uid = get_profile(event)['user_id']
@@ -417,7 +414,6 @@ def handle_message(event):
                 if isinstance(guess, int) == True:
                     message = guess_number(guess, nid, count)
                     line_bot_api.reply_message(event.reply_token, message)
-
     if msg[0] == '/':
         guess = int(msg[1:3])
         nid = get_profile(event)['name']
