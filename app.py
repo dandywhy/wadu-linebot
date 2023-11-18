@@ -335,10 +335,13 @@ def handle_message(event):
         FlexMessage = json.load(open('guess_pw.json'))
         message.append(TextSendMessage(text='請先加入遊戲哦!'))
         message.append(FlexSendMessage('終極密碼', FlexMessage))
-        line_bot_api.reply_message(event.reply_token,  message)
-    elif msg == '猜數':
+        line_bot_api.reply_message(event.reply_token, message)
+    elif msg == '猜數字':
         message = []
-        FlexMessage = json.load(open(''))
+        FlexMessage = json.load(open('guess_nb.json'))
+        message.append(TextSendMessage(text='先加入遊戲哦!'))
+        message.append(FlexSendMessage('猜數字', FlexMessage))
+        line_bot_api.reply_message(event.reply_token, message)
     elif msg == '離開':
         nid = get_profile(event)['name']
         uid = get_profile(event)['user_id']
@@ -466,7 +469,7 @@ def handle_message(event):
         message = TextSendMessage(text=name + "哈囉\n" + stock_ptt())
         line_bot_api.reply_message(event.reply_token, message)
     elif data == 'clear':
-        col.delete_many({})
+        col_rank.delete_many({})
         message = TextSendMessage(text="紀錄已清除")
         line_bot_api.reply_message(event.reply_token, message)
     elif data == 'check':
