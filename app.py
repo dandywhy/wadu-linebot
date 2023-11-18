@@ -267,7 +267,7 @@ def guess_number(guess, nid, count):
             col_ans.delete_many({})
             
             message = TextSendMessage(text=f'答案 : {res}\n{nid} 恭喜答對！')
-    if len(guess) != 4:
+    if len(str(guess)) != 4:
         message = TextSendMessage(text='請輸入四位數哦，四個不重複數字')
     return message
 def check_rank(event):
@@ -484,7 +484,10 @@ def handle_message(event):
         message = join_pw(event)
         line_bot_api.reply_message(event.reply_token, message)
     elif data == 'joingame_nb':
-        message = join_nb(event)
+        if col_gr.estimated_document_count() < 4:
+            message = join_nb(event)
+        else:
+            message = TextSendMessage(text='最多三人哦')
         line_bot_api.reply_message(event.reply_token, message)
     elif data == 'start':
         if col_game.estimated_document_count() > 1:
@@ -494,11 +497,8 @@ def handle_message(event):
             message = TextSendMessage(text='至少兩人才能玩哦')
             line_bot_api.reply_message(event.reply_token, message)
     elif data == 'start_nb':
-        if col_game.estimated_document_count() == 3:
-            message = TextSendMessage(text='最多三人哦')
-        else:
-            message = create_answer_nb()
-            line_bot_api.reply_message(event.reply_token, message)
+        message = create_answer_nb()
+        line_bot_api.reply_message(event.reply_token, message)
     elif data == 'disband':
         if col_game.find_one() != None:
             message = []
