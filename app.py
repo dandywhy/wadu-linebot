@@ -84,21 +84,29 @@ def join_pw(event):
     uid = user['user_id']
     nid = user['name']
     rankUID = col_rank.find_one({'user_id': uid})
-    col_game.insert_one({'name': nid, 'user_id': uid})
-    try:
-        if rankUID['user_id'] == uid:
-            message = TextSendMessage(text=f'{nid} 已入座!')
-    except:
-        col_rank.insert_one({'user_id': uid, 'point': 10000})
-        message = TextSendMessage(text=f'{nid} 首次入座\n獲得10000點!!')
+    check = col_game.find_one({'user_id': uid})
+    if not check:
+        col_game.insert_one({'name': nid, 'user_id': uid})
+        try:
+            if rankUID['user_id'] == uid:
+                message = TextSendMessage(text=f'{nid} 已入座!')
+        except:
+            col_rank.insert_one({'user_id': uid, 'point': 10000})
+            message = TextSendMessage(text=f'{nid} 首次入座\n獲得10000點!!')
+    else:
+        message = TextSendMessage(text=f'{nid}你已加入不用再按了')
     return message
 
 def join_nb(event):
     user = get_profile(event)
     uid = user['user_id']
     nid = user['name']
-    col_gr.insert_one({'name': nid, 'user_id': uid})
-    message = TextSendMessage(text=f'{nid} 已入座!')
+    check = col_gr.find_one({'user_id': uid})
+    if not check:
+        col_gr.insert_one({'name': nid, 'user_id': uid})
+        message = TextSendMessage(text=f'{nid} 已入座!')
+    else:
+        message = TextSendMessage(text=f'{nid}你已加入不用再按了')
     return message
 
 def clear_guessgame():
