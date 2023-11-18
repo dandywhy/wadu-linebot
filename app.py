@@ -232,15 +232,15 @@ def guess_game(guess, nid, count, uid):
             message.append(FlexSendMessage('繼續?', Flexmessage))
     return message
 
-def guess_number(guess, nid, count, uid):
+def guess_number(guess, nid, count):
     skipNum = col_gr.estimated_document_count() - 1
     ans = col_ans.find_one({'no': '1'})['ans']
-    p = 1
+    p = 1000
     res = 0
     for i in ans:
         i * p
         res += i * p
-        p *= 10
+        p /= 10
     message = []
     if count == skipNum:
         nextName = col_gr.find_one()['name']
@@ -253,7 +253,7 @@ def guess_number(guess, nid, count, uid):
             message = TextSendMessage(text=f'答案 : {res}\n{nid} 恭喜答對！')
     else:
         n = col_ans.find_one({'no': '2'})['count']
-        doc = col_gr.find().skip(num + 1).limit(1)
+        doc = col_gr.find().skip(n + 1).limit(1)
         for dic in doc:
             nextName = dic['name']
         if guess != res:
@@ -402,7 +402,7 @@ def handle_message(event):
             nowUID = doc['user_id']
             if gameUID == nowUID:
                 if isinstance(guess, int) == True:
-                    message = guess_number(guess, nid, count, uid)
+                    message = guess_number(guess, nid, count)
                     line_bot_api.reply_message(event.reply_token, message)
 
     if msg[0] == '/':

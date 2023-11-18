@@ -16,4 +16,3 @@ import random
 # db = client.guess_number
 # col = db.ans
 # print(col.find_one()['ans'])
-
