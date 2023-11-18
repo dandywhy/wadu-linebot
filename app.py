@@ -30,6 +30,7 @@ import random
 import time
 import datetime
 import pymongo
+import math
 # ======python的函數庫==========
 
 app = Flask(__name__)
@@ -241,6 +242,7 @@ def guess_number(guess, nid, count):
         i * p
         res += i * p
         p /= 10
+    res = math.floor(res)
     message = []
     if count == skipNum:
         nextName = col_gr.find_one()['name']
@@ -263,7 +265,10 @@ def guess_number(guess, nid, count):
             message = TextSendMessage(text=f'{nid} {a}A{b}B\n下一位: {nextName}')
         else:
             col_ans.delete_many({})
+            
             message = TextSendMessage(text=f'答案 : {res}\n{nid} 恭喜答對！')
+    if len(guess) != 4:
+        message = TextSendMessage(text='請輸入四位數哦，四個不重複數字')
     return message
 def check_rank(event):
     nid = get_profile(event)['name']
